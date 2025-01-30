@@ -1,0 +1,17 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import Login from "/Login";
+import Dashboard from "/Dashboard";
+
+export default function App () {
+  const [token, setToken] = useState(LocalStorage.getItem("token"));
+
+  return (
+    <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<Login setToken}/>}/>
+    <Route path="/dashboard" element={token ? <Dashboard /> : <Login setToken={setToken}/>}/>
+    <Routes>
+    </BrowserRouter>
+    );
+  }
